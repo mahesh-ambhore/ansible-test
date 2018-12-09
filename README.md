@@ -12,4 +12,4 @@ Before executing this playbook. We need to prepare the Docker container. To prep
 8) execute “docker container inspect myubuntussh” to get the conatainer info and get “IPAddress” from command output.
 9) execute “ ssh-copy-id docker@ IPAddress ” to communicate docker container using ssh.
 10) Execute playbook using below command .
-     - ansible-playbook -i hosts playbook.ym
+     - ansible-playbook -i hosts playbook.yml
