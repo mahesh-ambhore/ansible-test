@@ -1,0 +1,15 @@
+---
+- hosts: all 
+  gather_facts: True
+
+  vars_prompt:
+    - name: "my_sql_required"
+      prompt: "You Need to set up MySql Database ??\n1- Yes \n2- No\n"
+      private: no
+
+
+  roles:
+    - { role: apache }
+    - { role: mysql }
+    #- { role: mysqldb }
+    - { role: mysqldb, when: my_sql_required == "Yes" }

@@ -1,0 +1,17 @@
+---
+
+- name: Install apache ubuntu
+  apt: pkg=apache2 state=present update_cache=yes cache_valid_time=86400
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+  notify:
+    - start apache
+  tags:
+    - apache_ubuntu
+
+- name: Install apache CentOS
+  yum: pkg=httpd state=latest update_cache=yes
+  notify:
+    - start httpd
+  when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
+  tags:
+    - apache_centos

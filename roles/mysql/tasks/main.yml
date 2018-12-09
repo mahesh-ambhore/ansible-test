@@ -1,0 +1,19 @@
+---
+
+- name: Install Mysql Ubuntu
+  apt: name={{item}} state=latest update_cache=yes  cache_valid_time=86400
+  with_items:
+    - mysql-server
+    - mysql-client
+  notify:
+    - start mysql
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+
+- name: Install Mysql CentOS
+  yum: name={{item}} state=latest update_cache=yes
+  with_items:
+    - mysql-server
+    - mysql
+  when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
+  notify:
+    - start mysql
