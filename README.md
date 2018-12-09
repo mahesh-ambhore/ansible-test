@@ -7,7 +7,7 @@ Before executing this playbook. We need to prepare the Docker container. To prep
 5) create docker user using and add to the sudo group
 -  “adduser docker”.
 - “usermod -aG sudo docker”.
-6) edit Port from 22 to 2222 from "/etc/ssh/ssh_config"
+6) edit Port from 22 to 2222 from "/etc/ssh/ssh_config" and restart ssh service using sudo service ssh restart command
 7) open new terminal window.
 8) execute “docker container inspect myubuntussh” to get the conatainer info and get “IPAddress” from command output.
 9) execute “ ssh-copy-id docker@ IPAddress ” to communicate docker container using ssh.
